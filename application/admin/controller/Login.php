@@ -16,6 +16,11 @@ class Login extends Base
         return $this->fetch('login');
     }
 
+    public function login(){
+
+
+    }
+
     /**
      * 显示创建资源表单页.
      *

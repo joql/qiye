@@ -20,7 +20,7 @@
             </div>
             <div class="x-mid">
                 <div class="x-avtar">
-                    <img src="./images/logo.png" alt="">
+                    <img src="__STATIC__/images/logo.png" alt="">
                 </div>
                 <div class="input">
                     <form class="layui-form">
@@ -43,7 +43,7 @@
                             </div>
                         </div>
                         <div class="layui-form-item" id="loginbtn">
-                            <button  class="layui-btn" lay-filter="save" lay-submit="">
+                            <button  class="layui-btn" lay-filter="save" lay-submit="" id="btn_login" name="btn_login">
                                 登 录
                             </button>
                         </div>
@@ -53,7 +53,6 @@
         </div>
         <p style="color:#fff;text-align: center;">Copyright © 2017.Company name All rights X-admin </p>
         {include file="public/js" /}
-        </script>
         <script>
             layui.use(['form'],
             function() {
@@ -67,19 +66,33 @@
                 });
 
                 //监听提交
-                form.on('submit(save)',
-                function(data) {
-                    console.log(data);
-                    layer.alert(JSON.stringify(data.field), {
-                      title: '最终的提交信息'
-                    },function  () {
-                        location.href = "../Index/index.html";
-                    })
-                    return false;
+                /*form.on('submit(save)',
+                    function(data) {
+                        console.log(data);
+                        layer.alert(JSON.stringify(data.field), {
+                            title: '最终的提交信息'
+                        },function  () {
+                            location.href = "../Index/index.html";
+                        })
+                        return false;
+                    });*/
+
+                $('#btn_login').click(function () {
+
+                    var username = $('#username').val();
+                    var pass  = $.md5($('#pass').val()).toUpperCase();
+                    $.ajax({
+                        type:'POST',
+                        url:"{:url('login/login')}",
+                        data:{username:username,pass:pass},
+                        dataType:'json',
+                        success:function (data) {
+                            console.log(data);
+                        }
+                    });
+
                 });
-
             });
-
         </script>
     </body>
 
