@@ -23,31 +23,29 @@
                     <img src="__STATIC__/images/logo.png" alt="">
                 </div>
                 <div class="input">
-                    <form class="layui-form">
-                        <div class="layui-form-item x-login-box">
-                            <label for="username" class="layui-form-label">
-                                <i class="layui-icon">&#xe612;</i>
-                            </label>
-                            <div class="layui-input-inline">
-                                <input type="text" id="username" name="username" required="" lay-verify="username"
-                                autocomplete="off" placeholder="username" class="layui-input">
-                            </div>
+                    <div class="layui-form-item x-login-box">
+                        <label for="username" class="layui-form-label">
+                            <i class="layui-icon">&#xe612;</i>
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="text" id="username" name="username" required="" lay-verify="username"
+                                   autocomplete="off" placeholder="username" class="layui-input">
                         </div>
-                        <div class="layui-form-item x-login-box">
-                            <label for="pass" class="layui-form-label">
-                                <i class="layui-icon">&#xe628;</i>
-                            </label>
-                            <div class="layui-input-inline">
-                                <input type="password" id="pass" name="pass" required="" lay-verify="pass"
-                                autocomplete="off" placeholder="******" class="layui-input">
-                            </div>
+                    </div>
+                    <div class="layui-form-item x-login-box">
+                        <label for="pass" class="layui-form-label">
+                            <i class="layui-icon">&#xe628;</i>
+                        </label>
+                        <div class="layui-input-inline">
+                            <input type="password" id="pass" name="pass" required="" lay-verify="pass"
+                                   autocomplete="off" placeholder="******" class="layui-input">
                         </div>
-                        <div class="layui-form-item" id="loginbtn">
-                            <button  class="layui-btn" lay-filter="save" lay-submit="" id="btn_login" name="btn_login">
-                                登 录
-                            </button>
-                        </div>
-                    </form>
+                    </div>
+                    <div class="layui-form-item" id="loginbtn">
+                        <button  class="layui-btn"  id="btn_login" name="btn_login">
+                            登 录
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,29 +63,20 @@
                     $('body').css('background-color', color);
                 });
 
-                //监听提交
-                /*form.on('submit(save)',
-                    function(data) {
-                        console.log(data);
-                        layer.alert(JSON.stringify(data.field), {
-                            title: '最终的提交信息'
-                        },function  () {
-                            location.href = "../Index/index.html";
-                        })
-                        return false;
-                    });*/
-
                 $('#btn_login').click(function () {
 
                     var username = $('#username').val();
                     var pass  = $.md5($('#pass').val()).toUpperCase();
                     $.ajax({
                         type:'POST',
-                        url:"{:url('login/login')}",
+                        url:"{:url('login/check')}",
                         data:{username:username,pass:pass},
                         dataType:'json',
                         success:function (data) {
                             console.log(data);
+                        },
+                        error:function (XMLHttpRequest, textStatus, errorThrown) {
+                            alert("请求失败！");
                         }
                     });
 
