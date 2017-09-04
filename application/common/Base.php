@@ -11,6 +11,13 @@ use think\Controller;
 class Base extends Controller{
 
 
+    public function __initialize(){
+        session_start();
+
+        if(!$this->getLoginStatus()){
+            return $this->error('请登录',url('login/index'));
+        }
+    }
 
 
     public function welcome(){
@@ -43,6 +50,10 @@ class Base extends Controller{
      */
     public function ajaxReturn($arr = array()){
         return json($arr);
+    }
+
+    public function getLoginStatus(){
+        return (session('islogin') == true) ? true : false;
     }
 
 }
