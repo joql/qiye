@@ -11,9 +11,7 @@ use think\Controller;
 class Base extends Controller{
 
 
-    public function index(){
-        return $this->fetch('index');
-    }
+
 
     public function welcome(){
         return $this->fetch('welcome');
@@ -23,6 +21,28 @@ class Base extends Controller{
 
     public function category(){
         return $this->fetch('category');
+    }
+
+    /**
+     * 用途描述:参数过滤
+     * @param:
+     * @return:
+     * @date:20170904
+     * @author: ksj
+     */
+    public function parmFilter($parm){
+        return addslashes(trim($parm));
+    }
+
+    /**
+     * 用途描述:ajax 返回
+     * @param:
+     * @return:
+     * @date:20170904
+     * @author: ksj
+     */
+    public function ajaxReturn($arr = array()){
+        return json($arr);
     }
 
 }

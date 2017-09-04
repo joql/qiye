@@ -4,6 +4,7 @@ namespace app\admin\controller;
 
 
 use app\common\Base;
+use think\Db;
 use think\Request;
 use app\admin\model\Admin;
 
@@ -18,23 +19,28 @@ class Login extends Base
     }
 
     public function check(){
+        //init
         $status =0;
+        $admin = Db::table('admin');
+        $username = $this->parmFilter($_POST['username']);
+        $pass = $this->parmFilter($_POST['pass']);
 
-        $username = $_POST['username'];
-        $pass = $_POST['pass'];
+        if(empty($username) || empty($pass)){
+            return $this->ajaxReturn(['code'=>0,'msg'=>'请输入账号或密码']);
+        }
 
-        $map = ['username'=>$username];
-        $admin = Admin::get($map);
-
-        if(is_null($admin)){
-            $msg = '用户名不对';
-        }else{
-            $status =1;
-            $msg = 'success';
+        $user_info = $admin->field('username,password')->select();
+        if(is_null($user_info)){
+            return $this->ajaxReturn(['code'=>0,'msg'=>'用户名不存在']);
+        }
+        if($user_info['password'] == $pass){
+            session('islogin',turn);
             $admin->setInc('count');
             $admin->save(['last_time'=>time()]);
+            return $this->ajaxReturn(['code'=>1,'data'=>url('index/index'),'msg'=>'登陆成功']);
+        }else{
+            return $this->ajaxReturn(['code'=>0,'msg'=>'密码错误']);
         }
-        return json_encode(array(   'code'=>1,'msg'=>$msg));
 
     }
 
