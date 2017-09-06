@@ -1,6 +1,7 @@
 <?php
 namespace app\common;
 use think\Controller;
+use think\Request;
 
 /**
  * Created by PhpStorm.
@@ -10,25 +11,15 @@ use think\Controller;
  */
 class Base extends Controller{
 
+    public function __construct(Request $request = null)
+    {
+        parent::__construct($request);
 
-    public function __initialize(){
+        error_reporting(0);
         session_start();
-
-        if(!$this->getLoginStatus()){
-            return $this->error('请登录',url('login/index'));
-        }
+        $this->checkIsLogin();
     }
 
-
-    public function welcome(){
-        return $this->fetch('welcome');
-    }
-
-
-
-    public function category(){
-        return $this->fetch('category');
-    }
 
     /**
      * 用途描述:参数过滤
@@ -54,6 +45,13 @@ class Base extends Controller{
 
     public function getLoginStatus(){
         return (session('islogin') == true) ? true : false;
+    }
+
+    public function checkIsLogin(){
+        $url_para = $_SERVER['REQUEST_URI'];
+        if(!$this->getLoginStatus() && !strpos($url_para,'login/')){
+            $this->error('请先登录','login/index');
+        }
     }
 
 }

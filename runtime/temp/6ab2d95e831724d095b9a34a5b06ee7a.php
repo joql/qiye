@@ -1,19 +1,20 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:64:"E:\code\qiye\public/../application/admin\view\index\welcome.html";i:1503977010;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:64:"E:\code\qiye\public/../application/admin\view\index\welcome.html";i:1503991095;s:62:"E:\code\qiye\public/../application/admin\view\public\head.html";i:1503978918;s:62:"E:\code\qiye\public/../application/admin\view\public\foot.html";i:1503978746;s:60:"E:\code\qiye\public/../application/admin\view\public\js.html";i:1504060896;}*/ ?>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>
-            X-admin v1.0
-        </title>
-        <meta name="renderer" content="webkit">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta name="apple-mobile-web-app-status-bar-style" content="black">
-        <meta name="apple-mobile-web-app-capable" content="yes">
-        <meta name="format-detection" content="telephone=no">
-        <link rel="stylesheet" href="__STATIC__/css/x-admin.css" media="all">
-    </head>
+<head>
+    <meta charset="utf-8">
+    <title>
+        X-admin v1.0
+    </title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="__STATIC__/css/x-admin.css" media="all">
+</head>
     <body>
         <div class="x-body">
             <blockquote class="layui-elem-quote">
@@ -181,22 +182,28 @@
             </table>
         </div>
         <div class="layui-footer footer footer-demo">
-            <div class="layui-main">
-                <p>感谢layui,百度Echarts,jquery</p>
-                <p>
-                    <a href="/">
-                        Copyright ©2017 x-admin v2.3 All Rights Reserved.
-                    </a>
-                </p>
-                <p>
-                    <a href="__STATIC__/" target="_blank">
-                        本后台系统由X前端框架提供前端技术支持
-                    </a>
-                </p>
-            </div>
-        </div>
+    <div class="layui-main">
+        <p>感谢layui,百度Echarts,jquery</p>
+        <p>
+            <a href="/">
+                Copyright ©2017 x-admin v2.3 All Rights Reserved.
+            </a>
+        </p>
+        <p>
+            <a href="__STATIC__/" target="_blank">
+                本后台系统由X前端框架提供前端技术支持
+            </a>
+        </p>
+    </div>
+</div>
         <script src="__STATIC__/lib/layui/layui.js" charset="utf-8"></script>
-        <script src="__STATIC__/js/x-admin.js"></script>
+<script src="__STATIC__/js/x-admin.js"></script>
+<script src="__STATIC__/js/x-layui.js" charset="utf-8"></script>
+<script src="__STATIC__/js/jquery.md5.js" charset="utf-8"></script>
+<script src="//cdn.bootcss.com/echarts/3.3.2/echarts.min.js" charset="utf-8"></script>
+<script src="//cdn.bootcss.com/echarts/3.3.2/echarts.min.js" charset="utf-8"></script>
+<script src="//cdn.bootcss.com/echarts/3.3.2/extension/bmap.min.js" type="text/javascript"></script>
+<script src="http://echarts.baidu.com/asset/map/js/china.js"></script>
         <script>
         var _hmt = _hmt || [];
         (function() {
